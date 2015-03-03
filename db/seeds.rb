@@ -5,6 +5,14 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+Buyer.destroy_all
+buyer = Buyer.create!(
+  name: 'Mati',
+  email: 'yagooar@gmail.com',
+  password: '12345678'
+)
+
 Variant.destroy_all
 Product.destroy_all
 

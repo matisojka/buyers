@@ -1,3 +1,9 @@
+%div
+  - if current_user.visitor?
+    = link_to 'I want to log in', login_path
+  - else
+    Hello #{current_user.name}!
+
 %table
   %tr
     %th

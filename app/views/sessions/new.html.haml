@@ -1,0 +1,10 @@
+%h1 Log in
+%div
+  = flash[:error] if flash[:error]
+%div
+  = form_for @session do |f|
+    = f.text_field :email, required: true
+    = f.password_field :password, required: true
+
+    = f.submit 'Log in'
+
