@@ -3,5 +3,9 @@ class Product < ActiveRecord::Base
 
   validates :title, presence: true
 
+  def cheapest_price
+    variants.active.minimum(:price)
+  end
+
 end
 

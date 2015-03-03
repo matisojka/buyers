@@ -2,7 +2,9 @@ class Variant < ActiveRecord::Base
   belongs_to :product
   has_many :coupons
 
-  validates :is_active, :price, :quantity, presence: true
+  validates :price, :quantity, presence: true
+
+  scope :active, -> { where(is_active: true) }
 
 end
 
