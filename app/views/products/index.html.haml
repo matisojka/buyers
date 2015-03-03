@@ -25,7 +25,7 @@
       %td
         Price:
         = product.cheapest_price
-      %td
+      %td[product]
         = form_for Purchase.new do |f|
           = hidden_field_tag 'purchase[product_id]', product.id
           = f.submit 'Buy'

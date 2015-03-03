@@ -47,5 +47,7 @@ group :development, :test do
   gem 'pry-rails'
   gem 'rspec-rails'
   gem 'factory_girl_rails', '~> 4.0', require: false
+  gem 'capybara'
+  gem 'database_cleaner'
 end
 
