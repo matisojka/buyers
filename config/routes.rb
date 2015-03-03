@@ -5,4 +5,5 @@ Rails.application.routes.draw do
 
   get '/login' => 'sessions#new', as: :login
   resources :sessions, only: %i(create)
+  resources :purchases, only: %i(create)
 end

@@ -3,6 +3,13 @@
     = link_to 'I want to log in', login_path
   - else
     Hello #{current_user.name}!
+    %div
+      You have #{current_user.credits} credits left
+
+%div
+  = flash[:error]
+%div
+  = flash[:notice]
 
 %table
   %tr
@@ -19,6 +26,7 @@
         Price:
         = product.cheapest_price
       %td
-        %button
-          Buy
+        = form_for Purchase.new do |f|
+          = hidden_field_tag 'purchase[product_id]', product.id
+          = f.submit 'Buy'
 

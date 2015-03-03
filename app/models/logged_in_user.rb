@@ -2,7 +2,7 @@ class LoggedInUser < Struct.new(:user)
 
   alias :unwrap :user
 
-  delegate :name, to: :user
+  delegate :name, :credits, to: :user
 
   def logged_in?
     true

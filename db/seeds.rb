@@ -10,7 +10,8 @@ Buyer.destroy_all
 buyer = Buyer.create!(
   name: 'Mati',
   email: 'yagooar@gmail.com',
-  password: '12345678'
+  password: '12345678',
+  credits: 100
 )
 
 Variant.destroy_all
