@@ -7,5 +7,9 @@ class Product < ActiveRecord::Base
     variants.active.minimum(:price)
   end
 
+  def cheapest_variant
+    variants.active.order(:price).first
+  end
+
 end
 

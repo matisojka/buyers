@@ -10,8 +10,11 @@ class Purchase
 
     def call
       if buyer_has_enough_credits?
-        buyer.credits -= product.cheapest_price
-        buyer.save!
+        ActiveRecord::Base.transaction do
+          substract_credits!
+          assign_cheapest_variant_to_buyer!
+          create_coupon!
+        end
         true
       else
         false
@@ -19,6 +22,25 @@ class Purchase
     end
 
     private
+
+    def substract_credits!
+      buyer.credits -= product.cheapest_price
+      buyer.save!
+    end
+
+    def assign_cheapest_variant_to_buyer!
+      cheapest_variant.buyer = buyer
+
+      cheapest_variant.save!
+    end
+
+    def cheapest_variant
+      @cheapest_variant ||= product.cheapest_variant
+    end
+
+    def create_coupon!
+      Coupon::Creator.new(cheapest_variant).call
+    end
 
     def buyer_has_enough_credits?
       buyer.credits >= product.cheapest_price
